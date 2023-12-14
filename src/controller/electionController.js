@@ -1,7 +1,7 @@
 const User = require("../model/user");
 
 const sumbitOpinion = async (req, res) => {
-  const { name, age, district, party } = req.body;
+  const { name, age, district, party, address } = req.body;
   try {
     const newData = new User({
       name,
@@ -13,6 +13,7 @@ const sumbitOpinion = async (req, res) => {
     await newData.save();
     res.status(201).json({ message: "Form submitted successfully" });
   } catch (e) {
+    console.log(e);
     res.status(500).json({ message: "Internal Server Error!" });
   }
 };
